@@ -122,7 +122,7 @@
                         android:text="언어 선택"
                         android:textColor="@color/black"
                         android:textSize="25dp"
-                        app:backgroundTint="#D6A309" />
+                        app:backgroundTint="#FFC107" />
 
                     <ImageView
                         android:id="@+id/image_lang"
@@ -146,7 +146,7 @@
                         android:text="커뮤니티"
                         android:textColor="@color/black"
                         android:textSize="25dp"
-                        app:backgroundTint="#D6A309" />
+                        app:backgroundTint="#FFC107" />
 
                     <ImageView
                         android:id="@+id/image_commu"
@@ -170,7 +170,7 @@
                         android:text="공지사항"
                         android:textColor="@color/black"
                         android:textSize="25dp"
-                        app:backgroundTint="#D6A309" />
+                        app:backgroundTint="#FFC107" />
 
                     <ImageView
                         android:id="@+id/image_alarm"
@@ -194,7 +194,7 @@
                         android:text="후기"
                         android:textColor="@color/black"
                         android:textSize="25dp"
-                        app:backgroundTint="#D6A309" />
+                        app:backgroundTint="#FFC107" />
 
                     <ImageView
                         android:id="@+id/image_review"
@@ -218,7 +218,7 @@
                         android:text="설정"
                         android:textColor="@color/black"
                         android:textSize="25dp"
-                        app:backgroundTint="#D6A309" />
+                        app:backgroundTint="#FFC107" />
 
                     <ImageView
                         android:id="@+id/image_system"
