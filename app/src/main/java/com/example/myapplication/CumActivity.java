@@ -15,7 +15,7 @@ public class CumActivity extends MainActivity{
         setContentView(R.layout.activity_cummu);
 
         // 로그인 버튼 클릭시 액티비티 전환
-        Button imageButton = (Button) findViewById(R.id.login);
+        Button imageButton = (Button) findViewById(R.id.button_login);
         imageButton.setOnClickListener(new View.OnClickListener(){
 
             @Override
