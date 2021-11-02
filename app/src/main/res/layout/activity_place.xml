@@ -29,14 +29,17 @@
             android:layout_gravity="center_vertical"
             app:srcCompat="@drawable/arrow" />
 
-        <ImageButton
+        <Button
             android:id="@+id/home_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_vertical"
-            android:layout_margin="10dp"
-            android:background="#00000000"
-            app:srcCompat="@drawable/culture" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:text="문화재 검색"
+            android:textStyle="italic"
+            android:fontFamily="@font/fontstyle"
+            android:textSize="36sp"
+            app:backgroundTint="#000000" />
+
 
     </FrameLayout>
 
