@@ -22,8 +22,7 @@ package com.example.myapplication;
         import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-
-    private final int MY_PERMISSIONS_REQUEST_CAMERA = 1001;
+    
     DBHelper helper;
     SQLiteDatabase db;
 
