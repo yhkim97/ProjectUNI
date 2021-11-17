@@ -1,12 +1,16 @@
 package com.example.myapplication;
 
         import androidx.appcompat.app.AppCompatActivity;
+        import androidx.core.app.ActivityCompat;
+        import androidx.core.content.ContextCompat;
         import androidx.cursoradapter.widget.SimpleCursorAdapter;
 
+        import android.Manifest;
         import android.app.Activity;
         import android.app.AlertDialog;
         import android.content.ContentValues;
         import android.content.Intent;
+        import android.content.pm.PackageManager;
         import android.database.Cursor;
         import android.database.sqlite.SQLiteDatabase;
         import android.os.Bundle;
@@ -15,9 +19,11 @@ package com.example.myapplication;
         import android.widget.Button;
         import android.widget.EditText;
         import android.widget.ListView;
+        import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    private final int MY_PERMISSIONS_REQUEST_CAMERA = 1001;
     DBHelper helper;
     SQLiteDatabase db;
 
@@ -26,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         // 문화재 검색 버튼클릭시 액티비티 전환
@@ -64,6 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
         //DB 생성 및 불러오기
 //        DBHelper helper;
 //        SQLiteDatabase db;
@@ -95,8 +101,6 @@ public class MainActivity extends AppCompatActivity {
 //
 //        listView.setAdapter(adapter);
 
-
-
-
-        }
     }
+
+}
