@@ -1,6 +1,6 @@
 package com.example.myapplication;
 
-        import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
         import androidx.core.app.ActivityCompat;
         import androidx.core.content.ContextCompat;
         import androidx.cursoradapter.widget.SimpleCursorAdapter;
@@ -22,7 +22,7 @@ package com.example.myapplication;
         import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    
+
     DBHelper helper;
     SQLiteDatabase db;
 

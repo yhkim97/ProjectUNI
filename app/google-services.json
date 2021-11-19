@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "998862112937",
+    "project_id": "myteller-b7440",
+    "storage_bucket": "myteller-b7440.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998862112937:android:185e6a1b6043ab907341b8",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998862112937-1ees8fq1h3628rin3a9vljutkp4rg8s3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf5GWNkvtCKhhVuJL1L0_2FiXYtsZbzys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998862112937-1ees8fq1h3628rin3a9vljutkp4rg8s3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
