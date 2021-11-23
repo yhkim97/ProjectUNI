@@ -21,17 +21,16 @@ import androidx.appcompat.app.AppCompatActivity;
         import android.widget.ListView;
         import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
-    DBHelper helper;
-    SQLiteDatabase db;
+public class MainActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
         // 문화재 검색 버튼클릭시 액티비티 전환
         Button search_cult = (Button) findViewById(R.id.search_cult);

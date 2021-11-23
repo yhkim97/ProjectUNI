@@ -49,18 +49,18 @@ public class ListViewAdapter extends BaseAdapter {
         ListViewAdapterData listdata = list.get(i);
 
         //가져온 객체안에 있는 글자들을 각 뷰에 적용한다
-        tvNum.setText(Integer.toString(listdata.getNum())); //원래 int형이라 String으로 형 변환
-        tvName.setText(listdata.getName());
+        tvNum.setText(Integer.toString(listdata.getNo())); //원래 int형이라 String으로 형 변환
+        tvName.setText(listdata.getC_name());
 
         return view;
     }
 
     //ArrayList로 선언된 list 변수에 목록을 채워주기 위함 다른방시으로 구현해도 됨
-    public void addItemToList(int num, String name){
+    public void addItemToList(int no, String name){
         ListViewAdapterData listdata = new ListViewAdapterData();
 
-        listdata.setNum(num);
-        listdata.setName(name);
+        listdata.setNo(no);
+        listdata.setC_name(name);
 
         //값들의 조립이 완성된 listdata객체 한개를 list배열에 추가
         list.add(listdata);
