@@ -44,17 +44,44 @@ public class ZoneActivity extends MainActivity implements OnMapReadyCallback {
     };
     private FusedLocationSource locationSource;
     private NaverMap naverMap;
-
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
     private ArrayList<ListViewAdapterData>arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
+
+    LatLng Loc1 =  new LatLng(37.57113098, 127.0096586 );
+    LatLng Loc2 = new LatLng( 37.5710694,126.9886346);
+    LatLng Loc3 =  new LatLng(37.562919, 126.948715);
+    LatLng Loc4 = new LatLng(37.52404138,126.9803502);
+    LatLng Loc5 =  new LatLng(37.589116, 127.0182146 );
+    LatLng Loc6 = new LatLng(37.589116,127.0182146);
+    LatLng Loc7 =  new LatLng(37.589116, 127.0182146 );
+    LatLng Loc8 = new LatLng(37.589116,127.0182146);
+    LatLng Loc9 =  new LatLng(37.57937947, 126.9911 );
+    LatLng Loc10 = new LatLng(37.579201,126.975569);
+    LatLng Loc11 = new LatLng(37.578748,126.995008);
+    public ArrayList<LatLng> latLngs = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zone);
+
+        arrayList = new ArrayList<>();
+        latLngs.add(Loc1);
+        latLngs.add(Loc2);
+        latLngs.add(Loc3);
+        latLngs.add(Loc4);
+        latLngs.add(Loc5);
+        latLngs.add(Loc6);
+        latLngs.add(Loc7);
+        latLngs.add(Loc8);
+        latLngs.add(Loc9);
+        latLngs.add(Loc10);
+        latLngs.add(Loc11);
+
         locationSource =
                 new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
         FragmentManager fm = getSupportFragmentManager();
@@ -108,31 +135,34 @@ public class ZoneActivity extends MainActivity implements OnMapReadyCallback {
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                //Log.e("ZoneActivity",String.valueOf(DatabaseError.fromException()));
+                Log.e("ZoneActivity",String.valueOf(error.toException()));
             }
         });
 
         adapter = new CustomAdapter(arrayList, this);
         recyclerView.setAdapter(adapter);
 
+
+
     }
+
+
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         this.naverMap = naverMap;
         naverMap.setLocationSource(locationSource);
-        for(int i = 0;i<arrayList.size();i++) {
-            Double lat = arrayList.get(i).getLatitude();
-            Double lon = arrayList.get(i).getLongitude();
-            Marker mk = new Marker();
-            mk.setPosition(new LatLng(lat,lon));
-            mk.setMap(naverMap);
         ActivityCompat.requestPermissions(this, PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
-
+        for(int i = 0;i<latLngs.size();i++) {
+            LatLng loc = latLngs.get(i);
+            Marker mk = new Marker();
+            mk.setVisible(true);
+            mk.setPosition(loc);
+            mk.setMap(naverMap);
         }
-
-
     }
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
