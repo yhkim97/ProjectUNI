@@ -1,6 +1,7 @@
 package com.example.myapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +18,10 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     private ArrayList<ListViewAdapterData>arrayList;
     private Context context;
+    public interface OnListItemSelectedInterface {
+        void onItemSelected(View v, int position);
+    }
+    private OnListItemSelectedInterface mListener;
 
     public CustomAdapter(ArrayList<ListViewAdapterData> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -44,9 +49,21 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     public class CustomViewHolder extends RecyclerView.ViewHolder {
         TextView tv_id;
+
         public CustomViewHolder(@NonNull View itemView) {
             super(itemView);
             this.tv_id = itemView.findViewById(R.id.tv_id);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override //onclick event testing
+                public void onClick(View v) {
+                    Intent intent = new Intent(itemView.getContext(), PlaceActivity.class);
+                    v.getContext().startActivity(intent);
+                    intent.putExtra("c_name", )
+
+                }
+            });
         }
     }
+
 }
