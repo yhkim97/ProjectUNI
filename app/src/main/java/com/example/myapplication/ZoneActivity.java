@@ -6,21 +6,24 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.gson.internal.bind.ArrayTypeAdapter;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapFragment;
@@ -31,10 +34,9 @@ import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class ZoneActivity extends MainActivity implements OnMapReadyCallback {
-    private DatabaseReference mDatabase;
+
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 100;
     private static final String[] PERMISSIONS = {
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -42,17 +44,21 @@ public class ZoneActivity extends MainActivity implements OnMapReadyCallback {
     };
     private FusedLocationSource locationSource;
     private NaverMap naverMap;
-    public ArrayList<ListViewAdapterData> arrayList;
 
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
+    private ArrayList<ListViewAdapterData>arrayList;
+    private FirebaseDatabase database;
+    private DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_zone);
-        arrayList = new ArrayList<>();
         locationSource =
                 new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
         FragmentManager fm = getSupportFragmentManager();
-        MapFragment mapFragment = (MapFragment) fm.findFragmentById(R.id.map);
+        MapFragment mapFragment = (MapFragment)fm.findFragmentById(R.id.map);
         if (mapFragment == null) {
             mapFragment = MapFragment.newInstance();
             fm.beginTransaction().add(R.id.map, mapFragment).commit();
@@ -76,33 +82,54 @@ public class ZoneActivity extends MainActivity implements OnMapReadyCallback {
 
 
 
-        mDatabase = FirebaseDatabase.getInstance().getReference("Apidata");
-        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+        recyclerView = findViewById(R.id.recyclerView);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        arrayList = new ArrayList<>();
+
+        database = FirebaseDatabase.getInstance();
+
+        databaseReference = database.getReference("Apidata");
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 arrayList.clear();
-                for(DataSnapshot dataSnapshot: snapshot.getChildren()) { // 반복문으로 데이터 List 추출
-                    ListViewAdapterData listViewAdapterData = snapshot.getValue(ListViewAdapterData.class); // 만들어뒀던 ListViewData 객체에 데이터를 담는다
-                    arrayList.add(listViewAdapterData); // 담은 데이터들을 배열리스트에 넣고 리스트뷰에 보낼 준비
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    int i = 0;
+                    ListViewAdapterData listViewAdapterData = snapshot.getValue(ListViewAdapterData.class);
+                    arrayList.add(i,listViewAdapterData);
+                    // 담은 데이터들을 배열리스트에 넣고 리스트뷰에 보낼 준비
+                    i++;
                 }
+
+                adapter.notifyDataSetChanged();
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                Log.e("zoneActivity",String.valueOf(error.toException())); // 에러문 출력
+                //Log.e("ZoneActivity",String.valueOf(DatabaseError.fromException()));
             }
         });
 
+        adapter = new CustomAdapter(arrayList, this);
+        recyclerView.setAdapter(adapter);
 
     }
 
-
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
-
         this.naverMap = naverMap;
         naverMap.setLocationSource(locationSource);
+        for(int i = 0;i<arrayList.size();i++) {
+            Double lat = arrayList.get(i).getLatitude();
+            Double lon = arrayList.get(i).getLongitude();
+            Marker mk = new Marker();
+            mk.setPosition(new LatLng(lat,lon));
+            mk.setMap(naverMap);
         ActivityCompat.requestPermissions(this, PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
+
+        }
 
 
     }
@@ -116,18 +143,8 @@ public class ZoneActivity extends MainActivity implements OnMapReadyCallback {
         if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
             if (grantResults.length > 0
                     && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                naverMap.setLocationTrackingMode(LocationTrackingMode.None);
+                naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
             }
         }
-    }
-
-    public void info() {
-
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-
     }
 }

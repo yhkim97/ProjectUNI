@@ -21,7 +21,7 @@ public class PlaceActivity extends MainActivity {
         TextView sub = (TextView)findViewById(R.id.text_sub);
         Intent intentsub = getIntent();
         String datasub = intentsub.getStringExtra("info");
-        main.setText(datasub);
+        sub.setText(datasub);
 
     }
 }
