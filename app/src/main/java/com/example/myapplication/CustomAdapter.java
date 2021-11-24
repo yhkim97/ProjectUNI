@@ -18,10 +18,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
 
     private ArrayList<ListViewAdapterData>arrayList;
     private Context context;
-    public interface OnListItemSelectedInterface {
-        void onItemSelected(View v, int position);
-    }
-    private OnListItemSelectedInterface mListener;
+
 
     public CustomAdapter(ArrayList<ListViewAdapterData> arrayList, Context context) {
         this.arrayList = arrayList;
@@ -58,9 +55,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.CustomView
                 @Override //onclick event testing
                 public void onClick(View v) {
                     Intent intent = new Intent(itemView.getContext(), PlaceActivity.class);
+                    Integer num = arrayList.indexOf(v);
+                    intent.putExtra("c_name", arrayList.get(num).getC_name());
                     v.getContext().startActivity(intent);
-                    intent.putExtra("c_name", )
-
                 }
             });
         }

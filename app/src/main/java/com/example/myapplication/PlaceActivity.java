@@ -14,8 +14,9 @@ public class PlaceActivity extends MainActivity {
         setContentView(R.layout.activity_place);
 
         TextView main = (TextView)findViewById(R.id.text_main);
-
         Intent intent = getIntent();
+        String data = intent.getStringExtra("c_name");
+        main.setText(data);
 
     }
 }

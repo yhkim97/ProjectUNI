@@ -8,8 +8,10 @@ public class ListViewAdapterData {
     private String c_name;
     private double latitude;
     private double longitude;
+    private String info;
 
 
+    public void setInfo(String info){this.info = info;}
     public void setC_level(String c_level){this.c_level = c_level;}
     public void setC_location(String c_location){this.c_location = c_location;}
     public void setC_location2(String c_location2){this.c_location2 = c_location2;}
@@ -17,7 +19,7 @@ public class ListViewAdapterData {
     public void setLatitude(double latitude){this.latitude = latitude;}
     public void setLongitude(double longitude){this.longitude = longitude;}
 
-
+    public String getInfo() {return info;}
     public String getC_level(){return this.c_level;}
     public String getC_location(){return this.c_location;}
     public String getC_location2(){return this.c_location2;}
