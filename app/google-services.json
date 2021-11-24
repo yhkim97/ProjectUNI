@@ -1,41 +1,34 @@
 {
   "project_info": {
-    "project_number": "486084747430",
-    "project_id": "myculure",
-    "storage_bucket": "myculure.appspot.com"
+    "project_number": "998862112937",
+    "firebase_url": "https://myteller-b7440-default-rtdb.firebaseio.com",
+    "project_id": "myteller-b7440",
+    "storage_bucket": "myteller-b7440.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:486084747430:android:4b4b5b7524453622209467",
+        "mobilesdk_app_id": "1:998862112937:android:185e6a1b6043ab907341b8",
         "android_client_info": {
           "package_name": "com.example.myapplication"
         }
       },
       "oauth_client": [
         {
-          "client_id": "486084747430-vdlr3ovglcpo674sfeie0r2vb7645cs4.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.myapplication",
-            "certificate_hash": "2859a66d8cb966f66c3feb6c6e597a4996900d44"
-          }
-        },
-        {
-          "client_id": "486084747430-b2s0p10su10f2f0kalvs63lp6vhranb9.apps.googleusercontent.com",
+          "client_id": "998862112937-1ees8fq1h3628rin3a9vljutkp4rg8s3.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyANd4s62ny9Lt1fGeQTvfiP-Qui03O5zTk"
+          "current_key": "AIzaSyBf5GWNkvtCKhhVuJL1L0_2FiXYtsZbzys"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "486084747430-b2s0p10su10f2f0kalvs63lp6vhranb9.apps.googleusercontent.com",
+              "client_id": "998862112937-1ees8fq1h3628rin3a9vljutkp4rg8s3.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
