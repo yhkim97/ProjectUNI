@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">My Teller</string>
+    <string name="app_name">내손안의 해설사</string>
+    <string name = "Alocation">"위치검색"</string>
+    <string name = "Bloaction">"지역검색"</string>
+    <string name = "Clocation">"설정"</string>
+    <string name = "Dlocation">"문화재검색"</string>
 </resources>

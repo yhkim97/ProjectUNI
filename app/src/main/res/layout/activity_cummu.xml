@@ -18,15 +18,6 @@
             android:scaleType="fitStart"
             app:srcCompat="@drawable/up111p" />
 
-        <ImageButton
-            android:id="@+id/back_button"
-            android:layout_width="50dp"
-            android:layout_height="70dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="20dp"
-            android:background="#00000000"
-            app:srcCompat="@drawable/arrow" />
-
         <Button
             android:id="@+id/home_button"
             android:layout_width="wrap_content"
@@ -107,30 +98,6 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="60dp"
                 android:orientation="vertical">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="3dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/button_lang"
-                        android:layout_width="150dp"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="30dp"
-                        android:text="언어 선택"
-                        android:textColor="@color/black"
-                        android:textSize="25dp"
-                        app:backgroundTint="#FFC107" />
-
-                    <ImageView
-                        android:id="@+id/image_lang"
-                        android:layout_width="wrap_content"
-                        android:layout_height="60dp"
-                        android:layout_marginLeft="150dp"
-                        app:srcCompat="@drawable/a" />
-                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
